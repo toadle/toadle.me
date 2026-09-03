@@ -1,0 +1,376 @@
+---
+import ContainerLayout from "../../layouts/ContainerLayout.astro";
+import ContentSection from "../../components/ContentSection.astro";
+import { i18n } from "../../i18n";
+import isoOg from "../../assets/iso27001-og.png";
+import isoArt from "../../assets/iso27001.png";
+
+const lang = "en";
+const t = i18n[lang];
+
+const principles = [
+  {
+    title: "Privacy-friendly",
+    body: "Tools hosted and contracted in the EU, as little personal data as possible, no employee surveillance. Security should not come at the expense of your staff.",
+  },
+  {
+    title: "Low cost",
+    body: "Preference for tools you already use: source control, password manager, device management. Instead of one large software licence, only a few targeted additions.",
+  },
+  {
+    title: "Little ongoing effort",
+    body: "The security rules live as plain text files in your source control, the documents for the audit are generated automatically, checks run inside your existing workflows. Audit preparation takes days, not weeks.",
+  },
+  {
+    title: "Still the real thing",
+    body: "The certification covers everything the ISO/IEC 27001:2022 standard requires. No “certificate light”.",
+  },
+];
+
+const results = [
+  "A manageable set of rules – around 20 short policies, versioned and exportable as PDF.",
+  "A way of handling risks that takes one to two hours per quarter.",
+  "A clear overview of which security measures apply to you and why.",
+  "Fixed dates for the internal check and the yearly review by management.",
+  "Onboarding and offboarding checklists that actually get used.",
+  "A list of your important systems and suppliers – without duplicate upkeep.",
+];
+
+const practice = [
+  "Built and guided to certification for a team of around 20 people (internal and external): a provider of digital health and consumer apps with a B2B software business.",
+  "Certified against ISO/IEC 27001:2022 for several years. The yearly surveillance audits recently returned only minor notes and no serious findings.",
+  "Additionally backed by an external security test (penetration test).",
+];
+
+const steps = [
+  {
+    title: "Stocktake",
+    body: "What is in scope, what already exists, where the gaps are.",
+  },
+  {
+    title: "Build",
+    body: "Introduce rules, risks, and measures – kept lean.",
+  },
+  {
+    title: "Let it settle",
+    body: "Apply the measures in everyday work, run one internal check.",
+  },
+  {
+    title: "Certification & handover",
+    body: "Support the audit, then hand operation over to the team.",
+  },
+];
+
+---
+
+<ContainerLayout
+  title={`ISO 27001 certified, without the ballast · ${t.siteTitle}`}
+  description="Reaching ISO 27001 certification with privacy-friendly tools, low cost, and little ongoing effort – for small software and app teams."
+  lang={lang}
+  ogImage={isoOg.src}
+  ogAlt="Pixel art: a stack of security policies tied with a bow, with a padlock and a checkmark"
+  padTop
+  padBottom
+>
+  <section class="page">
+    <header class="intro">
+      <div class="intro-text">
+        <p class="kicker">ISO 27001</p>
+        <h1>Certified, without grinding the team to a halt</h1>
+        <p class="lead">
+          When customers, partners, or investors require an ISO 27001
+          certification from you, I help you get there – on a path that stays
+          affordable and that your team can keep running on its own afterwards.
+        </p>
+      </div>
+      <img
+        class="intro-art"
+        src={isoArt.src}
+        width={isoArt.width}
+        height={isoArt.height}
+        alt="A bundled stack of security policies with a padlock and a checkmark"
+        loading="eager"
+        decoding="async"
+      />
+    </header>
+    <p>
+      The path to certification often feels long and bureaucratic: a mountain of
+      requirements and documents to work through, and plenty of new rules to put
+      in place across the company. Make the wrong trade-offs along the way and
+      two things happen – it gets very expensive and time-consuming, and you
+      still don't end up feeling any more secure.
+    </p>
+    <div class="lean-examples">
+      <p>
+        There is a leaner way: with tools you already have, a few targeted
+        additions, and security rules documented where the work happens anyway.
+        In practice that looks something like this:
+      </p>
+      <ul class="checklist">
+        <li>
+          <strong>Policies</strong> as versioned pages in your wiki or Git repo –
+          with a change history instead of Word document versions.
+        </li>
+        <li>
+          <strong>Security incidents</strong> in the ticket system you already
+          use – GitHub, Jira, Linear.
+        </li>
+        <li>
+          <strong>Code changes</strong> with review and a green test run; your
+          pull requests are the evidence for the audit.
+        </li>
+        <li>
+          <strong>Access and devices</strong> through your identity provider such
+          as Microsoft 365 or Okta – wired directly into device management.
+        </li>
+        <li>
+          <strong>Passwords and keys</strong> in the team password manager, not
+          in chats or files.
+        </li>
+        <li>
+          <strong>Risks, measures, and suppliers</strong> in a few maintained
+          lists or one deliberately chosen tool – not a platform of its own.
+        </li>
+      </ul>
+    </div>
+
+    <ContentSection title="The approach" kicker="Pragmatic">
+      <ul class="cards">
+        {principles.map((item) => (
+          <li>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </li>
+        ))}
+      </ul>
+    </ContentSection>
+
+    <ContentSection title="What you end up with" kicker="Results">
+      <ul class="checklist">
+        {results.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </ContentSection>
+
+    <ContentSection title="In practice" kicker="Proven">
+      <ul class="checklist">
+        {practice.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </ContentSection>
+
+    <ContentSection title="How it works" kicker="Working together">
+      <p class="steps-intro">
+        From the initial stocktake to the certification audit usually takes three
+        to six months, at roughly one day of effort per week on your side.
+      </p>
+      <ol class="steps">
+        {steps.map((step) => (
+          <li>
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </li>
+        ))}
+      </ol>
+    </ContentSection>
+
+    <p class="closing">
+      Sounds like your situation? The <a href="/en/about">About</a> page lists the
+      ways to reach me.
+    </p>
+  </section>
+</ContainerLayout>
+
+<style>
+  .page {
+    display: grid;
+    gap: var(--space-2xl);
+    max-width: 76ch;
+    margin-inline: auto;
+  }
+
+  .intro {
+    display: grid;
+    gap: var(--space-l);
+    align-items: start;
+
+    @media (width >= 640px) {
+      grid-template-columns: 1fr auto;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+  }
+
+  .intro-text {
+    display: grid;
+    gap: var(--space-xs);
+  }
+
+  .intro h1 {
+    margin: 0;
+  }
+
+  .intro-art {
+    width: clamp(7rem, 24vw, 11rem);
+    height: auto;
+    image-rendering: pixelated;
+    justify-self: start;
+
+    @media (width >= 640px) {
+      justify-self: end;
+    }
+  }
+
+  .kicker {
+    margin: 0;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray-10);
+    font-size: var(--step--1);
+  }
+
+  .lead {
+    font-size: var(--step-2);
+    line-height: var(--line-height-snug);
+    max-width: 46ch;
+    margin: var(--space-2xs) 0 0;
+    color: var(--gray-12);
+  }
+
+  .page > p:not(.lead) {
+    margin: 0;
+    max-width: 66ch;
+    line-height: var(--line-height-body);
+  }
+
+  .lean-examples {
+    display: grid;
+    gap: var(--space-m);
+    max-width: 66ch;
+  }
+
+  .lean-examples > p {
+    margin: 0;
+    line-height: var(--line-height-body);
+  }
+
+  .page :global(.content-section) {
+    padding-top: var(--space-xl);
+  }
+
+  .page :global(.content-section h2) {
+    font-size: var(--step-2);
+  }
+
+  .cards {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: var(--space-l);
+
+    @media (width >= 760px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-xl);
+    }
+  }
+
+  .cards h3 {
+    margin: 0 0 var(--space-2xs);
+    font-size: var(--step-0);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .cards p {
+    margin: 0;
+    max-width: 46ch;
+    line-height: var(--line-height-snug);
+    color: var(--gray-11);
+  }
+
+  .checklist {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: var(--space-s);
+  }
+
+  .checklist li {
+    padding-inline-start: 1.4rem;
+    position: relative;
+    max-width: 66ch;
+    line-height: var(--line-height-snug);
+  }
+
+  .checklist li::before {
+    content: "";
+    position: absolute;
+    left: 0.15rem;
+    top: 0.3em;
+    width: 0.34rem;
+    height: 0.62rem;
+    border: solid var(--gray-9);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .steps-intro {
+    margin: 0;
+    max-width: 60ch;
+    line-height: var(--line-height-snug);
+  }
+
+  .steps {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
+    display: grid;
+    gap: var(--space-m);
+  }
+
+  .steps li {
+    counter-increment: step;
+    padding-inline-start: 2.4rem;
+    position: relative;
+  }
+
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.6rem;
+    height: 1.6rem;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--gray-6);
+    background: var(--gray-3);
+    font-size: var(--step--1);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+  }
+
+  .steps h3 {
+    margin: 0 0 var(--space-2xs);
+    font-size: var(--step-0);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .steps p {
+    margin: 0;
+    max-width: 60ch;
+    color: var(--gray-11);
+    line-height: var(--line-height-snug);
+  }
+
+  .closing {
+    margin: 0;
+    max-width: 66ch;
+    line-height: var(--line-height-body);
+  }
+</style>

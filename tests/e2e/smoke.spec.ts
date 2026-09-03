@@ -54,6 +54,27 @@ test("EN now hub loads with timeline", async ({ page }) => {
 });
 
 // ---------------------------------------------------------------------------
+// ISO 27001 landing page
+// ---------------------------------------------------------------------------
+
+test("DE ISO 27001 landing page loads", async ({ page }) => {
+  const response = await page.goto("/de/iso-27001", gotoOptions);
+  expect(response?.status()).toBeLessThan(400);
+  await expect(page.locator("h1").first()).toBeVisible();
+});
+
+test("EN ISO 27001 landing page loads", async ({ page }) => {
+  const response = await page.goto("/en/iso-27001", gotoOptions);
+  expect(response?.status()).toBeLessThan(400);
+  await expect(page.locator("h1").first()).toBeVisible();
+});
+
+test("language switch on DE ISO 27001 page points to EN", async ({ page }) => {
+  await page.goto("/de/iso-27001", gotoOptions);
+  await expect(page.locator("a.lang")).toHaveAttribute("href", "/en/iso-27001");
+});
+
+// ---------------------------------------------------------------------------
 // Header interactions
 // ---------------------------------------------------------------------------
 
